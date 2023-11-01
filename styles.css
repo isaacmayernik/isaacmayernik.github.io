@@ -13,9 +13,22 @@ h1 {
     padding: 10px;
     margin: 10px;
     background:rgb(219, 219, 219);
+    border-radius: 20px;
 }
 
 .assign img {
     width: 200px;
     padding: 10px;
+    border: 2px solid midnightblue;
 }
+
+a {   
+    text-decoration: none; /* remove underlining on anchor tags */
+    color: black;
+}
+
+Explain a:hover, img:hover, h1:hover
+    a:hover {
+        text-decoration: none;
+        color: black;
+    }
