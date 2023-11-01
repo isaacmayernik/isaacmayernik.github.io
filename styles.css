@@ -28,8 +28,7 @@ a {
     color: rgb(223, 164, 13);
 }
 
-Explain a:hover, img:hover, h1:hover
-    a:hover {
-        text-decoration: none;
-        color: rgb(7, 56, 179);
-    }
+a:hover {
+    text-decoration: none;
+    color: rgb(7, 56, 179);
+}
