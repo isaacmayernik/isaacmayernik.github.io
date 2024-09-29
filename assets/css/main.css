@@ -2646,6 +2646,11 @@ input, select, textarea {
 				width: 100%;
 			}
 
+		img {
+			max-width: 100%;
+			height: auto;
+		}
+
 		@media screen and (max-width: 736px) {
 
 			.image.fit {
@@ -4686,4 +4691,9 @@ input, select, textarea {
 			visibility: visible;
 		}
 
+		.responsive-iframe {
+			width: 100%;
+			height: auto;
+			max-width: 720px;
+		}
 	}
