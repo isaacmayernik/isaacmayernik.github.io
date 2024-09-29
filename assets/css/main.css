@@ -4690,10 +4690,10 @@ input, select, textarea {
 			box-shadow: 0 0 1.5rem 0 rgba(0, 0, 0, 0.2);
 			visibility: visible;
 		}
+	}
 
-		.responsive-iframe {
-			width: 100%;
-			height: auto;
-			max-width: 720px;
-		}
+	.responsive-iframe {
+		width: 100%;
+		height: auto;
+		max-width: 720px;
 	}
