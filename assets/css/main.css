@@ -4797,6 +4797,12 @@ body.is-preload #intro:not(.hidden) + #header + #nav {
   }
 }
 
+@media (max-width: 768px) {
+  .responsive-iframe {
+    max-width: 100%;
+  }
+}
+
 @media screen and (max-width: 980px) {
   body.is-navPanel-visible #wrapper {
     opacity: 0.5;
@@ -4814,7 +4820,9 @@ body.is-preload #intro:not(.hidden) + #header + #nav {
   .responsive-iframe {
     width: 100%;
     height: auto;
-    max-width: 1080px;
+    aspect-ratio: 16 / 9;
+    max-width: 560px;
+    margin: 0 auto;
   }
 
   .post.featured {
