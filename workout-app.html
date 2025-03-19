@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Workout App</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="assets/css/workout-app.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+</head>
+
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="navbar-content">
+            <a href="#" class="navbar-brand">Workout App</a>
+            <a href="#features" class="navbar-link">Features</a>
+        </div>
+    </nav>
+
+    <a href="index.html" class="back-button">Back</a>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <img src="https://placehold.co/240x240" alt="App Icon" class="app-icon">
+            <h1>Workout App</h1>
+            <p>Your ultimate fitness companion and workout tracker.</p>
+            <a href="workout-app.apk" class="download-button" download>
+                <i class="fas fa-download"></i>Download App
+            </a>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Image Slider -->
+        <div class="slider">
+            <button id="prevButton">&lt;</button>
+            <div class="slider-content">
+                <img id="sliderImage" src="images/workout-app-screenshot1.jpg" alt="Workout App Screenshot 1">
+                <p id="imageDescription" class="image-description">Track your daily workouts with ease.</p>
+            </div>
+            <button id="nextButton">&gt;</button>
+        </div>
+
+        <!-- Features Section -->
+        <div id="features" class="features">
+            <h2>Features</h2>
+            <ul>
+                <li>Temporary features 1</li>
+                <li>Temporary features 2</li>
+                <li>Temporary features 3</li>
+                <li>Temporary features 4</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        const images = [
+            { src: "https://placehold.co/600x900", description: "Temporary information about first screenshot." },
+            { src: "https://placehold.co/600x900", description: "Temporary information about second screenshot." },
+            { src: "https://placehold.co/600x900", description: "Temporary information about third screenshot." },
+        ];
+
+        let currentIndex = 0;
+        const sliderImage = document.getElementById("sliderImage");
+        const imageDescription = document.getElementById("imageDescription");
+
+        function updateSlider() {
+            sliderImage.src = images[currentIndex].src;
+            imageDescription.textContent = images[currentIndex].description;
+        }
+
+        document.getElementById("prevButton").addEventListener("click", () => {
+            currentIndex = (currentIndex - 1 + images.length) % images.length;
+            updateSlider();
+        });
+
+        document.getElementById("nextButton").addEventListener("click", () => {
+            currentIndex = (currentIndex + 1) % images.length;
+            updateSlider();
+        });
+
+        updateSlider();
+    </script>
+</body>
+
+</html>
