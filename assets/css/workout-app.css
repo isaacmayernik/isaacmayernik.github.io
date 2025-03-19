@@ -13,7 +13,7 @@ body {
   width: 100%;
   background-color: #4590c4;
   color: #fff;
-  padding: 20px 30px;
+  padding: 15px 20px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -148,6 +148,7 @@ body {
   margin-top: 10px;
   font-style: italic;
   color: #555;
+  font-size: 1.2rem;
 }
 
 .features {
@@ -172,4 +173,76 @@ body {
   border-radius: 5px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   font-size: 1.2rem;
+}
+
+/* For mobile devices of max-width 768px */
+@media only screen and (max-width: 768px) {
+  .navbar {
+    padding: 8px 14px;
+  }
+
+  .navbar-brand,
+  .navbar-link {
+    font-size: 1.2rem;
+  }
+
+  .navbar-content {
+    padding-right: 20px;
+  }
+
+  .back-button {
+    top: 60px;
+    left: 10px;
+    padding: 8px 14px;
+    font-size: 1rem;
+  }
+
+  .hero-content h1 {
+    font-size: 2.5rem;
+  }
+
+  .hero-content p {
+    font-size: 1.2rem;
+  }
+
+  .app-icon {
+    width: 150px;
+    height: 150px;
+  }
+
+  .download-button {
+    font-size: 1.2rem;
+    padding: 10px 20px;
+  }
+
+  .slider img {
+    width: 100%;
+    height: auto;
+    max-height: 400px;
+    border-radius: 5px;
+  }
+
+  .slider {
+    gap: 10px;
+  }
+
+  .slider button {
+    font-size: 1rem;
+    padding: 6px 12px;
+  }
+
+  .image-description {
+    font-size: 0.8rem;
+    margin-top: 8px;
+  }
+
+  .features h2 {
+    font-size: 2rem;
+  }
+
+  .features li {
+    font-size: 1rem;
+    padding: 10px;
+    margin: 8px 0;
+  }
 }
