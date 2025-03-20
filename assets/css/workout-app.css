@@ -175,8 +175,74 @@ body {
   font-size: 1.2rem;
 }
 
-/* For mobile devices of max-width 768px */
-@media only screen and (max-width: 768px) {
+/* For screens above 2200px */
+@media only screen and (min-width: 2560px) {
+  .navbar {
+    padding: 20px 30px;
+  }
+
+  .navbar-brand,
+  .navbar-link {
+    font-size: 2rem;
+  }
+
+  .navbar-content {
+    padding-right: 100px;
+  }
+
+  .back-button {
+    top: 100px;
+    left: 30px;
+    padding: 15px 30px;
+    font-size: 1.5rem;
+  }
+
+  .hero-content h1 {
+    font-size: 5rem;
+  }
+
+  .hero-content p {
+    font-size: 2.5rem;
+  }
+
+  .app-icon {
+    width: 360px;
+    height: 360px;
+  }
+
+  .download-button {
+    font-size: 2rem;
+    padding: 20px 40px;
+  }
+
+  .slider img {
+    width: 100%;
+    height: auto;
+    max-height: 1200px;
+  }
+
+  .slider button {
+    font-size: 2rem;
+    padding: 30px 45px;
+  }
+
+  .image-description {
+    font-size: 1.5rem;
+  }
+
+  .features h2 {
+    font-size: 3.5rem;
+  }
+
+  .features li {
+    font-size: 1.5rem;
+    padding: 20px;
+    margin: 15px 0;
+  }
+}
+
+/* For mobile devices of max-width 1440px */
+@media only screen and (max-width: 1440px) {
   .navbar {
     padding: 8px 14px;
   }
