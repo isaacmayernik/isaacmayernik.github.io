@@ -26,6 +26,7 @@
             <img src="https://placehold.co/240x240" alt="App Icon" class="app-icon">
             <h1>Workout App</h1>
             <p>Your ultimate fitness companion and workout tracker.</p>
+            <p>Page still under construction!</p>
             <a href="workout-app.apk" class="download-button" download>
                 <i class="fas fa-download"></i>Download App
             </a>
@@ -38,8 +39,9 @@
         <div class="slider">
             <button id="prevButton">&lt;</button>
             <div class="slider-content">
-                <img id="sliderImage" src="images/workout-app-screenshot1.jpg" alt="Workout App Screenshot 1">
-                <p id="imageDescription" class="image-description">Track your daily workouts with ease.</p>
+                <img id="sliderImage" src="images/workout-app-screenshot1.JPG" alt="Workout App Screenshot 1">
+                <p id="imageDescription" class="image-description">The main screen of the app where the user may select
+                    workouts.</p>
             </div>
             <button id="nextButton">&gt;</button>
         </div>
@@ -48,19 +50,24 @@
         <div id="features" class="features">
             <h2>Features</h2>
             <ul>
-                <li>Temporary features 1</li>
-                <li>Temporary features 2</li>
-                <li>Temporary features 3</li>
-                <li>Temporary features 4</li>
+                <li>Updates colors of muscle groups based on selected workouts and how many sets.</li>
+                <li>Users may enter in body information like weight and keep track of it.</li>
+                <li>Allows users to create routines based on regularly used workouts.</li>
+                <li>Saves and stores workouts, goals, and settings all locally.</li>
             </ul>
         </div>
     </div>
 
     <script>
         const images = [
-            { src: "https://placehold.co/600x900", description: "Temporary information about first screenshot." },
-            { src: "https://placehold.co/600x900", description: "Temporary information about second screenshot." },
-            { src: "https://placehold.co/600x900", description: "Temporary information about third screenshot." },
+            { src: "images/workout-app-screenshot1.JPG", description: "The main screen of the app where the user may select workouts." },
+            { src: "images/workout-app-screenshot2.JPG", description: "The user has clicked the 'Select Workout' button. They may click any option, or close it." },
+            { src: "images/workout-app-screenshot3.JPG", description: "The user has entered in workouts and the colors of the affected muscle groups have updated." },
+            { src: "images/workout-app-screenshot4.JPG", description: "The user has gone to an earlier date to view their saved workouts." },
+            { src: "images/workout-app-screenshot5.JPG", description: "The goals screen of the app where the user may enter in information. The app also tracks their weight on a graph." },
+            { src: "images/workout-app-screenshot6.JPG", description: "The settings screen where users may turn on dark mode and create routines." },
+            { src: "images/workout-app-screenshot7.JPG", description: "The create routine screen with dark mode enabled." },
+            { src: "images/workout-app-screenshot8.JPG", description: "A look at the main screen with dark mode enabled." },
         ];
 
         let currentIndex = 0;
