@@ -14,7 +14,11 @@
     <nav class="navbar">
         <div class="navbar-content">
             <a href="#" class="navbar-brand">Workout App</a>
-            <a href="#features" class="navbar-link">Features</a>
+            <button class="hamburger">&#9776;</button>
+            <div class="nav-links">
+                <a href="#why-use" class="navbar-link">Why Use This App</a>
+                <a href="#features" class="navbar-link">Features</a>
+            </div>
         </div>
     </nav>
 
@@ -23,11 +27,11 @@
     <!-- Hero Section -->
     <section class="hero">
         <div class="hero-content">
-            <img src="https://placehold.co/240x240" alt="App Icon" class="app-icon">
+            <img src="images/ic_launcher.png" alt="App Icon" class="app-icon">
             <h1>Workout App</h1>
             <p>Your ultimate fitness companion and workout tracker.</p>
-            <p>Page still under construction!</p>
-            <a href="workout-app.apk" class="download-button" download>
+            <a href="https://github.com/isaacmayernik/csce546_workoutapp/releases/download/v0.2/workoutlog.apk"
+                class="download-button" download>
                 <i class="fas fa-download"></i>Download App
             </a>
         </div>
@@ -35,61 +39,170 @@
 
     <!-- Main Content -->
     <div class="container">
-        <!-- Image Slider -->
-        <div class="slider">
-            <button id="prevButton">&lt;</button>
-            <div class="slider-content">
-                <img id="sliderImage" src="images/workout-app-screenshot1.JPG" alt="Workout App Screenshot 1">
-                <p id="imageDescription" class="image-description">The main screen of the app where the user may select
-                    workouts.</p>
+        <!-- Why Use Section -->
+        <div id="why-use" class="info">
+            <h2>Why Use This App?</h2>
+            <div class="about-caption">
+                <p>
+                    Tired of writing your workouts for your day in a notebook or your phone's notes? Whether you're
+                    starting your fitness journey or experienced in the gym or some athletics, keeping track of progress
+                    can be frustrating.
+                </p>
+                <p>
+                    This app gives you ways to to log your workouts, track your goals and progress over time, visualize
+                    which muscle groups you've worked, and receive daily notifications for motiviation and affirmation.
+                    With color-coded muscle group visualization, you can
+                    quickly see which areas you've trained, and which may need more attention.
+                </p>
             </div>
-            <button id="nextButton">&gt;</button>
         </div>
 
         <!-- Features Section -->
-        <div id="features" class="features">
+        <div id="features" class="info">
             <h2>Features</h2>
-            <ul>
-                <li>Updates colors of muscle groups based on selected workouts and how many sets.</li>
-                <li>Users may enter in body information like weight and keep track of it.</li>
-                <li>Allows users to create routines based on regularly used workouts.</li>
-                <li>Saves and stores workouts, goals, and settings all locally.</li>
-            </ul>
+            <div class="features-content">
+                <div class="slideshow-container">
+                    <div class="slide">
+                        <img id="sliderImage" src="images/1 - main.png" alt="Workout App Screenshot">
+                        <div class="slider-controls">
+                            <button id="prevButton" class="slider-button">&lt;</button>
+                            <button id="nextButton" class="slider-button">&gt;</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="feature-caption">
+                    <h3 id="featureTitle">Main Screen</h3>
+                    <ul id="featureDescription">
+                    </ul>
+                </div>
+            </div>
         </div>
     </div>
 
+    <!-- Image Modal -->
+    <div id="imageModal" class="modal">
+        <span class="close">&times;</span>
+        <img class="modal-content" id="modalImage">
+    </div>
+
+    <!-- Script for images and features -->
     <script>
-        const images = [
-            { src: "images/workout-app-screenshot1.JPG", description: "The main screen of the app where the user may select workouts." },
-            { src: "images/workout-app-screenshot2.JPG", description: "The user has clicked the 'Select Workout' button. They may click any option, or close it." },
-            { src: "images/workout-app-screenshot3.JPG", description: "The user has entered in workouts and the colors of the affected muscle groups have updated." },
-            { src: "images/workout-app-screenshot4.JPG", description: "The user has gone to an earlier date to view their saved workouts." },
-            { src: "images/workout-app-screenshot5.JPG", description: "The goals screen of the app where the user may enter in information. The app also tracks their weight on a graph." },
-            { src: "images/workout-app-screenshot6.JPG", description: "The settings screen where users may turn on dark mode and create routines." },
-            { src: "images/workout-app-screenshot7.JPG", description: "The create routine screen with dark mode enabled." },
-            { src: "images/workout-app-screenshot8.JPG", description: "A look at the main screen with dark mode enabled." },
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        const features = [
+            {
+                title: "Main Screen",
+                description: [
+                    "Color-coded muscle groups show workout focus areas",
+                    "View other days with saved locally saved history",
+                    "Select workouts or routines to add to your day",
+                    "Easy navigation to all app features"
+                ],
+                src: "images/1 - main.png"
+            },
+            {
+                title: "Workout Selection",
+                description: [
+                    "View a list of various workouts",
+                    "Search through the list easily, even with synonymous names",
+                    "Sort by a list of muscle groups to find the workout you want"
+                ],
+                src: "images/2 - selectworkout.png"
+            },
+            {
+                title: "Enter in Goals",
+                description: [
+                    "View most recently saved goals that save automatically based on required fields",
+                    "View trends in weight on an easy-to-view graph",
+                ],
+                src: "images/6 - goals.png"
+            },
+            {
+                title: "Settings",
+                description: [
+                    "Enable dark mode",
+                    "Save frequently used workout combinations by creating a routine",
+                    "Access app settings to enable notifications to receive daily affirmations"
+                ],
+                src: "images/7 - settings.png"
+            },
+            {
+                title: "Create Routine Workouts",
+                description: [
+                    "Save a routine to add it to your day back on the home screen",
+                    "Click a workout to view affected muscle groups and tips to get better gains",
+                ],
+                src: "images/9 - routine.png"
+            },
+            {
+                title: "View Your Day's History",
+                description: [
+                    "Easily view, edit, and delete workouts for your day",
+                    "Edit your reps and weight here for each set",
+                    "View your new personal bests here for each workout"
+                ],
+                src: "images/10 - history.png"
+            }
         ];
 
         let currentIndex = 0;
         const sliderImage = document.getElementById("sliderImage");
-        const imageDescription = document.getElementById("imageDescription");
+        const featureTitle = document.getElementById("featureTitle");
+        const featureDescription = document.getElementById("featureDescription");
+        const modal = document.getElementById("imageModal");
+        const modalImg = document.getElementById("modalImage");
+        const prevButton = document.getElementById("prevButton");
+        const nextButton = document.getElementById("nextButton");
 
-        function updateSlider() {
-            sliderImage.src = images[currentIndex].src;
-            imageDescription.textContent = images[currentIndex].description;
+        function updateDisplay() {
+            const currentFeature = features[currentIndex];
+            sliderImage.src = currentFeature.src;
+            featureTitle.textContent = currentFeature.title;
+
+            // Clear existing list items
+            featureDescription.innerHTML = '';
+
+            // Add new list items
+            currentFeature.description.forEach(item => {
+                const li = document.createElement('li');
+                li.textContent = item;
+                featureDescription.appendChild(li);
+            });
         }
 
-        document.getElementById("prevButton").addEventListener("click", () => {
-            currentIndex = (currentIndex - 1 + images.length) % images.length;
-            updateSlider();
+        prevButton.addEventListener("click", () => {
+            currentIndex = (currentIndex - 1 + features.length) % features.length;
+            updateDisplay();
         });
 
-        document.getElementById("nextButton").addEventListener("click", () => {
-            currentIndex = (currentIndex + 1) % images.length;
-            updateSlider();
+        nextButton.addEventListener("click", () => {
+            currentIndex = (currentIndex + 1) % features.length;
+            updateDisplay();
         });
 
-        updateSlider();
+        // Image click to enlarge
+        sliderImage.addEventListener("click", function () {
+            modal.style.display = "block";
+            modalImg.src = this.src;
+        });
+
+        // Close modal when clicking X or outside image
+        document.querySelector(".close").addEventListener("click", function () {
+            modal.style.display = "none";
+        });
+
+        modal.addEventListener("click", function (e) {
+            if (e.target === modal) {
+                modal.style.display = "none";
+            }
+        });
+
+        updateDisplay();
     </script>
 </body>
 
