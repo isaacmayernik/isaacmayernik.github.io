@@ -3997,8 +3997,10 @@ body.is-preload #intro:not(.hidden) + #header + #nav {
 }
 
 #main > .posts p {
-  font-size: 1.25rem;
-  line-height: 1.6;
+  font-family: "Merriweather", Georgia, serif;
+  font-weight: 300;
+  font-size: 1rem;
+  line-height: 2;
   margin-bottom: 1.5rem;
 }
 
