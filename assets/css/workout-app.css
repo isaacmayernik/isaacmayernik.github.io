@@ -141,10 +141,26 @@ body {
   color: var(--primary);
   margin-bottom: 30px;
 }
+.about-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  align-items: center;
+  justify-content: space-between;
+}
+.about-caption {
+  flex: 1;
+  min-width: 300px;
+  max-width: calc(50% - 1rem);
+}
 .about-caption p {
   font-size: 1.25rem;
   line-height: 1.6;
   margin-bottom: 15px;
+}
+.responsive-iframe {
+  flex: 1;
+  height: 300px;
 }
 
 /* Features Section */
@@ -266,6 +282,19 @@ body {
     width: 100%;
   }
 
+  .about-container {
+    flex-direction: column;
+  }
+
+  .about-caption {
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .responsive-iframe {
+    width: 480px;
+  }
+
   .hero-content h1 {
     font-size: 2.5rem;
   }
@@ -356,8 +385,17 @@ body {
     text-align: center;
   }
 
+  .about-caption {
+    max-width: 100%;
+    width: 100%;
+  }
+
   .about-caption p {
     text-align: center;
+  }
+
+  .responsive-iframe {
+    width: 320px;
   }
 
   .modal-content {
@@ -538,5 +576,9 @@ body {
 
   .features-caption li {
     font-size: 0.9rem;
+  }
+
+  .responsive-iframe {
+    width: 240px;
   }
 }
