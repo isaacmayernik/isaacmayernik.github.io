@@ -1,0 +1,320 @@
+:root {
+  --primary: #18cb65;
+  --primary-dark: #14b057;
+  --primary-light: #2ae078;
+  --accent: #ff6b35;
+  --white: #ffffff;
+  --black: #1a1a2e;
+  --background: #ffffff;
+  --text: #2d3748;
+  --gradient-start: #18cb65;
+  --gradient-end: #0fa54c;
+}
+
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  background-color: var(--background);
+  color: var(--text);
+  line-height: 1.6;
+  overflow: hidden;
+}
+
+/* Navigation Bar */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: linear-gradient(
+    135deg,
+    var(--gradient-start),
+    var(--gradient-end)
+  );
+  padding: 15px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 3000px;
+  padding: 0 20px;
+}
+
+.navbar-brand {
+  font-size: 1.8rem;
+  text-decoration: none;
+  color: var(--white);
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+/* Back Button */
+.back-button {
+  position: fixed;
+  top: 80px;
+  left: 20px;
+  background-color: var(--white);
+  color: var(--primary);
+  padding: 10px 20px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-size: 1.2rem;
+  z-index: 1000;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  font-weight: 600;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.back-button:hover {
+  background-color: var(--primary);
+  color: var(--white);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+}
+
+/* Hero Section */
+.hero {
+  min-height: calc(100vh - 20px);
+  background: linear-gradient(
+    135deg,
+    var(--gradient-start),
+    var(--gradient-end)
+  );
+  color: var(--white);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding-top: 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" opacity="0.05"><polygon fill="white" points="0,1000 1000,0 1000,1000"/></svg>');
+  background-size: cover;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 800px;
+  padding: 0 20px;
+}
+
+.hero-content h1 {
+  font-size: 3.5rem;
+  margin-bottom: 10px;
+  color: var(--white);
+  font-weight: 800;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.hero-content p {
+  font-size: 1.5rem;
+  margin-bottom: 30px;
+  font-weight: 300;
+  opacity: 0.9;
+}
+
+.app-icon {
+  width: 192px;
+  height: 192px;
+  border-radius: 30px;
+  margin-bottom: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  border: 5px solid rgba(255, 255, 255, 0.2);
+  transition: transform 0.3s ease;
+}
+
+.app-icon:hover {
+  transform: scale(1.05);
+}
+
+/* Features */
+.features {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin: 25px 0 35px;
+  flex-wrap: wrap;
+}
+
+.features div {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1.1rem;
+  font-weight: 500;
+  opacity: 0.95;
+}
+
+.features i {
+  font-size: 1.4rem;
+  opacity: 0.9;
+}
+
+/* Play Store Button */
+.download-button {
+  background-color: var(--white);
+  color: var(--primary);
+  padding: 15px 35px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-size: 1.3rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  transition: all 0.3s ease;
+  font-weight: 600;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+  position: relative;
+  overflow: hidden;
+}
+
+.download-button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.4),
+    transparent
+  );
+  transition: left 0.5s;
+}
+
+.download-button:hover {
+  background-color: var(--primary-dark);
+  color: var(--white);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.download-button:hover::before {
+  left: 100%;
+}
+
+.download-button i {
+  font-size: 1.5rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .hero-content h1 {
+    font-size: 2.5rem;
+  }
+
+  .hero-content p {
+    font-size: 1.2rem;
+  }
+
+  .app-icon {
+    width: 150px;
+    height: 150px;
+  }
+
+  .download-button {
+    font-size: 1.1rem;
+    padding: 12px 25px;
+  }
+
+  .back-button {
+    top: 70px;
+    left: 15px;
+    padding: 8px 15px;
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar {
+    padding: 12px 15px;
+  }
+
+  .navbar-brand {
+    font-size: 1.5rem;
+  }
+
+  .hero-content h1 {
+    font-size: 2rem;
+  }
+
+  .hero-content p {
+    font-size: 1rem;
+  }
+
+  .app-icon {
+    width: 120px;
+    height: 120px;
+  }
+
+  .download-button {
+    font-size: 1rem;
+    padding: 10px 20px;
+  }
+
+  .back-button {
+    top: 60px;
+    left: 10px;
+    padding: 6px 12px;
+    font-size: 0.9rem;
+  }
+}
+
+/* For screens above 2560px */
+@media only screen and (min-width: 2560px) {
+  .navbar {
+    padding: 20px 30px;
+  }
+
+  .navbar-brand {
+    font-size: 2.5rem;
+  }
+
+  .back-button {
+    top: 100px;
+    left: 30px;
+    padding: 15px 30px;
+    font-size: 1.5rem;
+  }
+
+  .hero-content h1 {
+    font-size: 5rem;
+  }
+
+  .hero-content p {
+    font-size: 2rem;
+  }
+
+  .app-icon {
+    width: 250px;
+    height: 250px;
+  }
+
+  .download-button {
+    font-size: 1.8rem;
+    padding: 20px 40px;
+  }
+}
