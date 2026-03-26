@@ -17,7 +17,9 @@ body {
   background-color: var(--background);
   color: var(--text);
   line-height: 1.6;
-  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
 /* Navigation Bar */
@@ -85,7 +87,7 @@ body {
 
 /* Hero Section */
 .hero {
-  min-height: calc(100vh - 20px);
+  flex: 1;
   background: linear-gradient(
     135deg,
     var(--gradient-start),
@@ -96,9 +98,10 @@ body {
   justify-content: center;
   align-items: center;
   text-align: center;
-  padding-top: 20px;
   position: relative;
-  overflow: hidden;
+  overflow: visible;
+  padding-top: 80px;
+  padding-bottom: 20px;
 }
 
 .hero::before {
@@ -110,6 +113,7 @@ body {
   height: 100%;
   background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" opacity="0.05"><polygon fill="white" points="0,1000 1000,0 1000,1000"/></svg>');
   background-size: cover;
+  pointer-events: none;
 }
 
 .hero-content {
@@ -220,41 +224,74 @@ body {
   font-size: 1.5rem;
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
-  .hero-content h1 {
-    font-size: 2.5rem;
-  }
-
-  .hero-content p {
-    font-size: 1.2rem;
-  }
-
-  .app-icon {
-    width: 150px;
-    height: 150px;
-  }
-
-  .download-button {
-    font-size: 1.1rem;
-    padding: 12px 25px;
-  }
-
-  .back-button {
-    top: 70px;
-    left: 15px;
-    padding: 8px 15px;
-    font-size: 1rem;
-  }
+/* Footer */
+.footer {
+  padding: 20px;
+  text-align: center;
+  background: linear-gradient(135deg, #14b057, #0f9a47);
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-@media (max-width: 480px) {
+.footer-links {
+  display: flex;
+  justify-content: center;
+  gap: 32px;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
+}
+
+.footer-link {
+  color: white;
+  text-decoration: none;
+  font-size: 0.85rem;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 500;
+}
+
+.footer-link:hover {
+  color: #ffdd00;
+  transform: translateY(-1px);
+}
+
+.footer-link i {
+  font-size: 0.8rem;
+}
+
+.footer-copyright {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.7rem;
+}
+
+/* Responsive Design - Mobile First */
+@media (max-width: 768px) {
+  /* Navbar */
   .navbar {
     padding: 12px 15px;
   }
 
   .navbar-brand {
-    font-size: 1.5rem;
+    font-size: 1.3rem;
+  }
+
+  /* Back Button */
+  .back-button {
+    top: 70px;
+    left: 15px;
+    padding: 6px 12px;
+    font-size: 0.8rem;
+  }
+
+  .back-button i {
+    font-size: 0.8rem;
+  }
+
+  /* Hero Section */
+  .hero {
+    padding-top: 70px;
+    padding-bottom: 15px;
   }
 
   .hero-content h1 {
@@ -262,24 +299,120 @@ body {
   }
 
   .hero-content p {
-    font-size: 1rem;
+    font-size: 0.95rem;
+    margin-bottom: 20px;
   }
 
   .app-icon {
-    width: 120px;
-    height: 120px;
+    width: 100px;
+    height: 100px;
+    border-radius: 20px;
+    margin-bottom: 15px;
   }
 
+  /* Features */
+  .features {
+    gap: 12px;
+    margin: 15px 0 20px;
+  }
+
+  .features div {
+    font-size: 0.75rem;
+    gap: 6px;
+  }
+
+  .features i {
+    font-size: 0.9rem;
+  }
+
+  /* Download Button */
   .download-button {
-    font-size: 1rem;
     padding: 10px 20px;
+    font-size: 0.9rem;
+    gap: 8px;
+  }
+
+  .download-button i {
+    font-size: 1rem;
+  }
+
+  /* Footer */
+  .footer {
+    padding: 15px;
+  }
+
+  .footer-links {
+    gap: 16px;
+    margin-bottom: 8px;
+  }
+
+  .footer-link {
+    font-size: 0.7rem;
+  }
+
+  .footer-link i {
+    font-size: 0.65rem;
+  }
+
+  .footer-copyright {
+    font-size: 0.6rem;
+  }
+}
+
+/* Extra Small Screens (under 480px) */
+@media (max-width: 480px) {
+  .navbar {
+    padding: 10px 12px;
+  }
+
+  .navbar-brand {
+    font-size: 1.1rem;
   }
 
   .back-button {
     top: 60px;
     left: 10px;
-    padding: 6px 12px;
-    font-size: 0.9rem;
+    padding: 5px 10px;
+    font-size: 0.7rem;
+  }
+
+  .hero {
+    padding-top: 60px;
+  }
+
+  .hero-content h1 {
+    font-size: 1.6rem;
+  }
+
+  .hero-content p {
+    font-size: 0.85rem;
+  }
+
+  .app-icon {
+    width: 80px;
+    height: 80px;
+    border-radius: 16px;
+  }
+
+  .features {
+    gap: 10px;
+  }
+
+  .features div {
+    font-size: 0.65rem;
+  }
+
+  .download-button {
+    padding: 8px 16px;
+    font-size: 0.8rem;
+  }
+
+  .footer-links {
+    gap: 12px;
+  }
+
+  .footer-link {
+    font-size: 0.6rem;
   }
 }
 
