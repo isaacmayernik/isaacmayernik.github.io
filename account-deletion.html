@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liftly - Account Deletion Request</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #dc2626, #b91c1c);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 600px;
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: white;
+            text-decoration: none;
+            margin-bottom: 20px;
+            font-size: 0.9rem;
+            transition: opacity 0.2s;
+        }
+
+        .back-button:hover {
+            opacity: 0.8;
+        }
+
+        .card {
+            background: white;
+            border-radius: 24px;
+            padding: 32px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            font-size: 1.8rem;
+            color: #1a1a2e;
+            margin-bottom: 8px;
+        }
+
+        .subtitle {
+            color: #666;
+            margin-bottom: 24px;
+            font-size: 0.9rem;
+        }
+
+        .warning-box {
+            background: #ffebee;
+            padding: 16px;
+            border-radius: 12px;
+            margin-bottom: 24px;
+            border-left: 4px solid #dc2626;
+        }
+
+        .warning-box h3 {
+            color: #c62828;
+            font-size: 1rem;
+            margin-bottom: 8px;
+        }
+
+        .warning-box p {
+            color: #b71c1c;
+            font-size: 0.85rem;
+            line-height: 1.4;
+        }
+
+        .data-types {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 16px;
+            margin-bottom: 24px;
+        }
+
+        .data-types h3 {
+            font-size: 0.9rem;
+            color: #333;
+            margin-bottom: 12px;
+        }
+
+        .data-types ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .data-types li {
+            padding: 8px 0;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.85rem;
+            color: #555;
+        }
+
+        .data-types li:last-child {
+            border-bottom: none;
+        }
+
+        .data-types li::before {
+            content: "🗑️";
+        }
+
+        .retained-list li::before {
+            content: "🔒";
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            font-weight: 500;
+            margin-bottom: 6px;
+            color: #333;
+            font-size: 0.85rem;
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            padding: 12px 14px;
+            border: 1px solid #ddd;
+            border-radius: 12px;
+            font-size: 0.9rem;
+            transition: all 0.2s;
+            font-family: inherit;
+        }
+
+        input:focus,
+        textarea:focus {
+            outline: none;
+            border-color: #dc2626;
+            box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.1);
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+
+        .note {
+            background: #fff3e0;
+            padding: 12px;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            color: #e65100;
+            margin-bottom: 20px;
+            border-left: 3px solid #ff9800;
+        }
+
+        .button {
+            width: 100%;
+            background: linear-gradient(135deg, #dc2626, #b91c1c);
+            color: white;
+            border: none;
+            padding: 14px;
+            border-radius: 40px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(220, 38, 38, 0.3);
+        }
+
+        .button:active {
+            transform: translateY(0);
+        }
+
+        .in-app-steps {
+            background: #e8f5e9;
+            border-radius: 12px;
+            padding: 16px;
+            margin-top: 24px;
+        }
+
+        .in-app-steps h3 {
+            font-size: 0.9rem;
+            color: #2e7d32;
+            margin-bottom: 12px;
+        }
+
+        .in-app-steps ol {
+            padding-left: 20px;
+            margin: 0;
+        }
+
+        .in-app-steps li {
+            font-size: 0.8rem;
+            color: #1b5e20;
+            margin-bottom: 8px;
+            line-height: 1.4;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 20px;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.75rem;
+        }
+
+        hr {
+            margin: 20px 0;
+            border: none;
+            border-top: 1px solid #eee;
+        }
+
+        @media (max-width: 600px) {
+            .card {
+                padding: 24px;
+            }
+
+            h1 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <a href="index.html" class="back-button">
+            ← Back to Liftly
+        </a>
+
+        <div class="card">
+            <h1>Request Account Deletion</h1>
+            <p class="subtitle">Permanently delete your Liftly account and all associated data.</p>
+
+            <div class="warning-box">
+                <h3>⚠️ This action is permanent</h3>
+                <p>Your account, profile, workout history, friends, and all personal data will be deleted from our
+                    servers. This cannot be undone.</p>
+            </div>
+
+            <div class="data-types">
+                <h3>What will be deleted:</h3>
+                <ul>
+                    <li>Your account and login credentials (cannot log in again)</li>
+                    <li>All workout history and logs</li>
+                    <li>Personal records and achievements</li>
+                    <li>All saved routines</li>
+                    <li>Goals and progress tracking</li>
+                    <li>Profile information (name, username, email)</li>
+                    <li>Profile photo</li>
+                    <li>Friend connections and friend requests</li>
+                    <li>Reactions sent and received</li>
+                    <li>Muscle color history</li>
+                    <li>Theme and app settings</li>
+                    <li>Notification preferences</li>
+                </ul>
+            </div>
+
+            <div class="data-types" style="background: #fff8e1;">
+                <h3>What happens to your local data:</h3>
+                <ul>
+                    <li>Your workouts are saved locally on your device</li>
+                    <li>You are automatically converted to a guest user</li>
+                    <li>Your data stays on your device but is removed from our servers</li>
+                </ul>
+            </div>
+
+            <div class="note">
+                💡 Your workouts will NOT be lost. They will be saved locally on your device. You can continue using
+                Liftly as a guest, or create a new account later. Your profile, friends, and social data will be
+                permanently deleted
+                from our servers.
+            </div>
+
+            <form id="deletionForm">
+                <div class="form-group">
+                    <label>Full Name *</label>
+                    <input type="text" id="name" placeholder="Enter the name on your account" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Account Email *</label>
+                    <input type="email" id="email" placeholder="Enter your account email address" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Username (optional)</label>
+                    <input type="text" id="username" placeholder="@username - helps us locate your account">
+                </div>
+
+                <div class="form-group">
+                    <label>Reason for leaving (optional)</label>
+                    <textarea id="reason" placeholder="Help us improve..."></textarea>
+                </div>
+
+                <button type="submit" class="button">
+                    <span>🗑️</span> Request Account Deletion
+                </button>
+            </form>
+
+            <hr>
+
+            <div class="in-app-steps">
+                <h3>Or delete your account directly from the app:</h3>
+                <ol>
+                    <li>Open Liftly on your device</li>
+                    <li>Go to <strong>Profile Tab</strong> → <strong>Settings</strong> (gear icon)</li>
+                    <li>Scroll to <strong>Other</strong> section</li>
+                    <li>Tap <strong>Delete Account</strong></li>
+                    <li>Confirm deletion — your account will be removed from our servers</li>
+                </ol>
+                <p style="font-size: 0.75rem; color: #666; margin-top: 12px;">
+                    Note: Your workouts will be saved locally as a guest. You can sign up again later with a new
+                    account.
+                </p>
+            </div>
+        </div>
+
+        <footer>
+            &copy; 2025 Liftly | Simple fitness tracking
+        </footer>
+    </div>
+
+    <script>
+        document.getElementById('deletionForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const username = document.getElementById('username').value;
+            const reason = document.getElementById('reason').value;
+
+            const subject = encodeURIComponent('Liftly Account Deletion Request');
+
+            let body = `ACCOUNT DELETION REQUEST\n\n`;
+            body += `Name: ${name}\n`;
+            body += `Email: ${email}\n`;
+            if (username) body += `Username: ${username}\n`;
+            if (reason) body += `\nReason for leaving:\n${reason}\n`;
+            body += `\n---\nPlease delete my Liftly account and all associated data from your servers as described above.`;
+
+            const mailtoLink = `mailto:workoutappbusiness@gmail.com?subject=${subject}&body=${encodeURIComponent(body)}`;
+
+            window.location.href = mailtoLink;
+        });
+    </script>
+</body>
+
+</html>
