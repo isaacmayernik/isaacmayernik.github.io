@@ -212,6 +212,7 @@ body {
 /* Two images that form one wide panorama: no gap, rounded only on the outside */
 .screen-pair {
   display: flex;
+  flex-wrap: nowrap;
   flex: 0 0 auto;
   border-radius: 28px;
   overflow: hidden;
@@ -220,6 +221,8 @@ body {
 }
 
 .screens-row .screen-pair img {
+  display: block;
+  flex: 0 0 auto;
   border-radius: 0;
   box-shadow: none;
   margin: 0;
@@ -228,6 +231,7 @@ body {
 .screens-row img {
   height: 520px;
   width: auto;
+  aspect-ratio: 600 / 1304;
   flex: 0 0 auto;
   border-radius: 28px;
   box-shadow: 0 12px 30px rgba(26, 26, 46, 0.18);
