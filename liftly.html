@@ -2,9 +2,10 @@
 <html lang="en">
 
 <head>
-    <title>Liftly</title>
+    <title>Liftly – Simple Workout Logging</title>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Liftly is a simple workout log for iOS and Android that stays out of your way." />
     <link rel="stylesheet" href="assets/css/liftly.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
 
@@ -29,7 +30,7 @@
     <!-- Hero Section -->
     <section class="hero">
         <div class="hero-content">
-            <img src="images/App icon.png" alt="App Icon" class="app-icon">
+            <img src="images/App icon.png" alt="Liftly app icon" class="app-icon">
             <h1>Liftly</h1>
             <p>A simple workout log that stays out of your way.</p>
             <div class="features">
@@ -38,25 +39,43 @@
                 <div><i class="fas fa-user-slash"></i> No account required</div>
             </div>
             <div class="download-buttons">
-                <a href="https://play.google.com/store/apps/details?id=com.isaacmayernik.workoutlogapp&hl=en_US"
-                    class="download-button" target="_blank">
-                    <i class="fab fa-google-play"></i> Play Store
+                <a href="https://apps.apple.com/us/app/liftly-simple-workout-logging/id6761848001" class="store-badge"
+                    target="_blank" rel="noopener">
+                    <i class="fab fa-apple"></i>
+                    <span><small>Download on the</small><strong>App Store</strong></span>
                 </a>
-                <a href="https://apps.apple.com/us/app/liftly-simple-workout-logging/id6761848001"
-                    class="download-button" target="_blank">
-                    <i class=" fab fa-apple"></i> App Store
+                <a href="https://play.google.com/store/apps/details?id=com.isaacmayernik.workoutlogapp&hl=en_US"
+                    class="store-badge" target="_blank" rel="noopener">
+                    <i class="fab fa-google-play"></i>
+                    <span><small>Get it on</small><strong>Google Play</strong></span>
                 </a>
             </div>
         </div>
     </section>
 
-    <!-- Footer - always at bottom -->
+    <!-- Screenshots: drop images into images/liftly/ named 1.png, 2.png, ... 6.png.
+         The section stays hidden until at least one image loads; missing ones are skipped. -->
+    <section class="screens" id="screenshots" hidden>
+        <h2>See it in action</h2>
+        <p class="screens-sub">Log a workout in seconds and see exactly which muscles you've hit.</p>
+        <div class="screens-row">
+            <img src="images/liftly/01.png" alt="Liftly screenshot 1">
+            <img src="images/liftly/02.png" alt="Liftly screenshot 2">
+            <img src="images/liftly/03.png" alt="Liftly screenshot 3">
+            <img src="images/liftly/04.png" alt="Liftly screenshot 4">
+            <img src="images/liftly/05.png" alt="Liftly screenshot 5">
+            <img src="images/liftly/06.png" alt="Liftly screenshot 6">
+            <img src="images/liftly/07.png" alt="Liftly screenshot 7">
+        </div>
+    </section>
+
+    <!-- Footer -->
     <footer class="footer">
         <div class="footer-links">
             <a href="privacy-policy.html" class="footer-link">
                 <i class="fas fa-shield-alt"></i> Privacy
             </a>
-            <a href="https://buymeacoffee.com/liftly" target="_blank" class="footer-link">
+            <a href="https://buymeacoffee.com/liftly" target="_blank" rel="noopener" class="footer-link">
                 <i class="fas fa-coffee"></i> Support Me
             </a>
             <a href="mailto:workoutappbusiness@gmail.com" class="footer-link">
@@ -64,9 +83,23 @@
             </a>
         </div>
         <div class="footer-copyright">
-            &copy; 2025 Liftly
+            &copy; <span id="year">2026</span> Liftly
         </div>
     </footer>
+
+    <script>
+        document.getElementById("year").textContent = new Date().getFullYear();
+        (function () {
+            var section = document.getElementById("screenshots");
+            section.querySelectorAll(".screens-row img").forEach(function (img) {
+                function shown() { section.hidden = false; }
+                function missing() { img.remove(); }
+                if (img.complete) { img.naturalWidth ? shown() : missing(); }
+                img.addEventListener("load", shown);
+                img.addEventListener("error", missing);
+            });
+        })();
+    </script>
 </body>
 
 </html>
