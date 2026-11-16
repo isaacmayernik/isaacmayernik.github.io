@@ -1,0 +1,953 @@
+/* Isaac Mayernik portfolio
+   Keeps the original site's identity: dark textured background with a warm glow,
+   heavy uppercase Source Sans headings, Merriweather body text. */
+
+:root {
+  --bg: #212931;
+  --ink: #eef1f5;
+  --body: #c9cfd7;
+  --muted: #97a0ac;
+  --rule: rgba(255, 255, 255, 0.14);
+  --panel: rgba(16, 21, 27, 0.55);
+  --panel-solid: #1a2027;
+  --liftly: #18cb65;
+
+  --display: "Source Sans 3", "Source Sans Pro", Helvetica, sans-serif;
+  --serif: "Merriweather", Georgia, serif;
+  --max: 1120px;
+  --gutter: clamp(20px, 5vw, 48px);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 72px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--body);
+  font-family: var(--serif);
+  font-weight: 300;
+  font-size: 1rem;
+  line-height: 1.85;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Fixed atmospheric background (a pseudo-element, because iOS ignores background-attachment: fixed) */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background-color: var(--bg);
+  background-image:
+    url("../../images/overlay.png"),
+    linear-gradient(180deg, rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0.35)),
+    url("../../images/bg.jpg");
+  background-size: auto, auto, cover;
+  background-position: center, center, top center;
+  background-repeat: repeat, no-repeat, no-repeat;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  color: var(--ink);
+  text-underline-offset: 4px;
+  text-decoration-color: rgba(255, 255, 255, 0.4);
+}
+
+a:hover {
+  text-decoration-color: var(--ink);
+}
+
+:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 3px;
+}
+
+strong {
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.wrap {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+}
+
+/* Shared heading voice from the original site */
+.intro h1,
+.section h2,
+.feature h3,
+.project h4,
+.footer h2,
+.brand,
+.btn,
+.topbar nav a {
+  font-family: var(--display);
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.075em;
+  color: var(--ink);
+}
+
+/* ---------- Top bar ---------- */
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: rgba(26, 32, 39, 0.82);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--rule);
+}
+
+.topbar .wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 58px;
+}
+
+.brand {
+  font-size: 0.95rem;
+  text-decoration: none;
+}
+
+.topbar nav {
+  display: flex;
+  gap: clamp(16px, 3vw, 32px);
+}
+
+.topbar nav a {
+  font-size: 0.78rem;
+  text-decoration: none;
+  color: var(--muted);
+}
+
+.topbar nav a:hover {
+  color: var(--ink);
+}
+
+/* ---------- Intro ---------- */
+.intro {
+  padding: clamp(56px, 10vw, 128px) 0 clamp(48px, 7vw, 96px);
+}
+
+.intro .wrap {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: clamp(32px, 6vw, 80px);
+  align-items: center;
+}
+
+.intro h1 {
+  margin: 0;
+  font-size: clamp(2.5rem, 7.5vw, 5.25rem);
+  line-height: 1;
+  letter-spacing: 0.06em;
+  border-bottom: 3px solid var(--ink);
+  padding-bottom: 0.3em;
+  display: inline-block;
+}
+
+.intro .lede {
+  margin: 28px 0 0;
+  max-width: 38ch;
+  font-size: clamp(1.1rem, 2vw, 1.3rem);
+  font-style: italic;
+  line-height: 1.7;
+  color: var(--ink);
+}
+
+.intro .lede a {
+  text-decoration-color: var(--liftly);
+  text-decoration-thickness: 2px;
+}
+
+.intro .meta {
+  margin: 12px 0 0;
+  max-width: 52ch;
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 32px;
+}
+
+/* Buttons: the original site's outlined, letter-spaced style */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0 22px;
+  height: 46px;
+  font-size: 0.8rem;
+  text-decoration: none;
+  border: 2px solid var(--ink);
+  background: transparent;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.btn.solid {
+  background: var(--ink);
+  color: var(--bg);
+}
+
+.btn.solid:hover {
+  background: #fff;
+  color: var(--bg);
+}
+
+.btn i {
+  font-size: 1.05rem;
+}
+
+.portrait {
+  width: clamp(200px, 24vw, 290px);
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  border: 1px solid var(--rule);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
+}
+
+/* ---------- Sections ---------- */
+.section {
+  padding: clamp(56px, 8vw, 96px) 0;
+}
+
+#work {
+  padding-top: 0;
+}
+
+.section-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 28px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--rule);
+}
+
+.section h2 {
+  margin: 0;
+  font-size: clamp(1.4rem, 3vw, 2rem);
+}
+
+.section-head p {
+  margin: 0;
+  color: var(--muted);
+  font-style: italic;
+  font-size: 0.95rem;
+}
+
+/* ---------- Liftly feature ---------- */
+.feature {
+  background: var(--panel);
+  border: 1px solid var(--rule);
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+  overflow: hidden;
+}
+
+.feature-copy {
+  padding: clamp(28px, 4.5vw, 56px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.feature-title {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.feature-title img {
+  width: 64px;
+  height: 64px;
+  border-radius: 15px;
+}
+
+.feature h3 {
+  margin: 0;
+  font-size: clamp(1.8rem, 3.5vw, 2.4rem);
+  line-height: 1;
+}
+
+.feature .status {
+  margin: 8px 0 0;
+  color: var(--liftly);
+  font-size: 0.9rem;
+  font-style: italic;
+  line-height: 1.3;
+}
+
+.feature p.desc {
+  margin: 22px 0 0;
+  max-width: 48ch;
+}
+
+.feature .stack {
+  margin: 10px 0 0;
+  color: var(--muted);
+  font-size: 0.88rem;
+}
+
+.feature .actions .btn.solid {
+  background: var(--liftly);
+  border-color: var(--liftly);
+  color: #0b2416;
+}
+
+.feature .actions .btn.solid:hover {
+  background: #2ae078;
+  border-color: #2ae078;
+}
+
+.feature-shots {
+  position: relative;
+  overflow: hidden;
+  min-height: 420px;
+  background: radial-gradient(ellipse at 50% 40%, rgba(24, 203, 101, 0.18), transparent 65%);
+  border-left: 1px solid var(--rule);
+}
+
+.feature-shots img {
+  position: absolute;
+  width: 38%;
+  border-radius: 16px;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.5);
+}
+
+.feature-shots img:nth-child(1) {
+  left: 6%;
+  top: 14%;
+}
+
+.feature-shots img:nth-child(2) {
+  left: 31%;
+  top: 5%;
+  z-index: 2;
+}
+
+.feature-shots img:nth-child(3) {
+  left: 56%;
+  top: 18%;
+}
+
+/* ---------- Project grid ---------- */
+.group {
+  margin-top: 64px;
+}
+
+.group h3 {
+  margin: 0 0 20px;
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 300;
+  font-size: 1.25rem;
+  color: var(--ink);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 24px;
+}
+
+.project {
+  background: var(--panel);
+  border: 1px solid var(--rule);
+  display: flex;
+  flex-direction: column;
+  transition: border-color 0.2s ease;
+}
+
+.project:hover {
+  border-color: rgba(255, 255, 255, 0.35);
+}
+
+.thumb {
+  position: relative;
+  display: block;
+  aspect-ratio: 16 / 9;
+  background: #10151b;
+  overflow: hidden;
+  border-bottom: 1px solid var(--rule);
+}
+
+.thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.88;
+  transition: opacity 0.2s ease;
+}
+
+.thumb:hover img {
+  opacity: 1;
+}
+
+.thumb.icon {
+  display: grid;
+  place-items: center;
+  background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.08), transparent 70%), #141a20;
+}
+
+.thumb.icon img {
+  width: 96px;
+  height: 96px;
+  object-fit: contain;
+  border-radius: 22px;
+  opacity: 1;
+}
+
+.thumb .play {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  color: #fff;
+  font-size: 2.4rem;
+  text-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
+}
+
+.project-body {
+  padding: 22px 24px 24px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.project h4 {
+  margin: 0;
+  font-size: 1.1rem;
+  line-height: 1.3;
+}
+
+.project .stack {
+  margin: 6px 0 0;
+  color: var(--muted);
+  font-size: 0.82rem;
+  font-style: italic;
+  line-height: 1.5;
+}
+
+.project p.desc {
+  margin: 12px 0 0;
+  font-size: 0.9rem;
+  line-height: 1.8;
+}
+
+.links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 20px;
+  margin-top: auto;
+  padding-top: 18px;
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: 0.85rem;
+  letter-spacing: 0.04em;
+}
+
+.links a {
+  text-decoration: none;
+}
+
+.links a:hover {
+  text-decoration: underline;
+}
+
+.links i {
+  margin-right: 7px;
+}
+
+/* ---------- About ---------- */
+.about-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
+  gap: clamp(28px, 6vw, 72px);
+  border-top: 1px solid var(--rule);
+  padding-top: clamp(40px, 6vw, 64px);
+}
+
+.about-grid p {
+  margin: 0 0 1.1em;
+  max-width: 62ch;
+}
+
+.about-grid p:last-child {
+  margin-bottom: 0;
+}
+
+.portrait-small {
+  display: none;
+  width: 140px;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  border: 1px solid var(--rule);
+  margin-top: 20px;
+}
+
+/* ---------- Footer ---------- */
+.footer {
+  padding: 56px 0 72px;
+  background: rgba(16, 21, 27, 0.6);
+  border-top: 1px solid var(--rule);
+}
+
+.footer .wrap {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.footer h2 {
+  margin: 0;
+  font-size: clamp(1.3rem, 2.6vw, 1.7rem);
+}
+
+.footer p {
+  margin: 6px 0 0;
+  color: var(--muted);
+  font-style: italic;
+  font-size: 0.92rem;
+}
+
+.social {
+  display: flex;
+  gap: 10px;
+}
+
+.social a {
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  border: 2px solid var(--rule);
+  color: var(--ink);
+  font-size: 1.15rem;
+  text-decoration: none;
+  transition: border-color 0.15s ease;
+}
+
+.social a:hover {
+  border-color: var(--ink);
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 900px) {
+  .feature {
+    grid-template-columns: 1fr;
+  }
+
+  .feature-shots {
+    min-height: 0;
+    aspect-ratio: 16 / 11;
+    order: -1;
+    border-left: 0;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .about-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .brand {
+    font-size: 0.85rem;
+  }
+
+  .topbar nav {
+    gap: 14px;
+  }
+
+  .topbar nav a {
+    font-size: 0.72rem;
+  }
+
+  .intro .wrap {
+    grid-template-columns: 1fr;
+  }
+
+  .portrait {
+    display: none;
+  }
+
+  .portrait-small {
+    display: block;
+  }
+
+  .section-head {
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .btn {
+    padding: 0 16px;
+    height: 44px;
+    font-size: 0.74rem;
+  }
+}
+
+/* ---------- Phones ---------- */
+
+/* Large phones (≤425px): buttons become a tidy grid, tighter panels */
+@media (max-width: 425px) {
+  .topbar .wrap {
+    height: 54px;
+  }
+
+  .brand {
+    font-size: 0.8rem;
+  }
+
+  .topbar nav {
+    gap: 12px;
+  }
+
+  .topbar nav a {
+    font-size: 0.68rem;
+  }
+
+  .intro {
+    padding: 40px 0 44px;
+  }
+
+  .intro h1 {
+    font-size: 2.4rem;
+  }
+
+  .intro .lede {
+    margin-top: 22px;
+    font-size: 1.08rem;
+  }
+
+  /* Primary button full width, the rest in pairs */
+  .actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 26px;
+  }
+
+  .actions .btn {
+    justify-content: center;
+    padding: 0 10px;
+  }
+
+  .actions .btn:first-child {
+    grid-column: 1 / -1;
+  }
+
+  .section {
+    padding: 52px 0;
+  }
+
+  .section-head {
+    margin-bottom: 22px;
+  }
+
+  .feature-shots {
+    aspect-ratio: 4 / 3;
+  }
+
+  .feature-copy {
+    padding: 24px 20px 26px;
+  }
+
+  .feature p.desc {
+    margin-top: 18px;
+    font-size: 0.95rem;
+  }
+
+  .group {
+    margin-top: 48px;
+  }
+
+  .group h3 {
+    margin-bottom: 14px;
+  }
+
+  .about-grid p {
+    font-size: 0.95rem;
+  }
+
+  .footer {
+    padding: 44px 0 56px;
+  }
+}
+
+/* Medium phones (≤375px) */
+@media (max-width: 375px) {
+  :root {
+    --gutter: 18px;
+  }
+
+  body {
+    font-size: 0.95rem;
+  }
+
+  .brand {
+    font-size: 0.74rem;
+  }
+
+  .topbar nav {
+    gap: 10px;
+  }
+
+  .topbar nav a {
+    font-size: 0.64rem;
+  }
+
+  .intro {
+    padding: 32px 0 40px;
+  }
+
+  .intro h1 {
+    font-size: 2.15rem;
+  }
+
+  .intro .lede {
+    font-size: 1.02rem;
+  }
+
+  .intro .meta {
+    font-size: 0.86rem;
+  }
+
+  .btn {
+    height: 42px;
+    font-size: 0.7rem;
+    gap: 8px;
+  }
+
+  .feature-title {
+    gap: 14px;
+  }
+
+  .feature-title img {
+    width: 52px;
+    height: 52px;
+    border-radius: 12px;
+  }
+
+  .feature h3 {
+    font-size: 1.6rem;
+  }
+
+  .project h4 {
+    font-size: 1rem;
+  }
+
+  .project p.desc {
+    font-size: 0.86rem;
+  }
+
+  .links {
+    font-size: 0.8rem;
+  }
+
+  .social a {
+    width: 44px;
+    height: 44px;
+  }
+}
+
+/* Small phones (≤320px) */
+@media (max-width: 320px) {
+  :root {
+    --gutter: 16px;
+  }
+
+  /* Not enough room for three nav links beside the name */
+  .topbar nav a[href="#about"] {
+    display: none;
+  }
+
+  .intro h1 {
+    font-size: 1.9rem;
+    letter-spacing: 0.04em;
+  }
+
+  .intro .lede {
+    font-size: 0.98rem;
+  }
+
+  .actions .btn {
+    font-size: 0.66rem;
+    gap: 6px;
+  }
+
+  /* The Liftly buttons are longer, so stack them */
+  .feature .actions {
+    grid-template-columns: 1fr;
+  }
+
+  .feature-copy {
+    padding: 22px 16px 24px;
+  }
+
+  .feature h3 {
+    font-size: 1.45rem;
+  }
+
+  .footer h2 {
+    font-size: 1.2rem;
+  }
+}
+
+/* ---------- Phones: projects become a compact list ---------- */
+@media (max-width: 640px) {
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 0;
+    background: var(--panel);
+    border: 1px solid var(--rule);
+  }
+
+  .project {
+    display: grid;
+    grid-template-columns: 96px minmax(0, 1fr);
+    gap: 16px;
+    align-items: start;
+    padding: 18px 16px;
+    background: transparent;
+    border: 0;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .project:last-child {
+    border-bottom: 0;
+  }
+
+  .thumb {
+    aspect-ratio: 1 / 1;
+    border: 1px solid var(--rule);
+  }
+
+  .thumb .play {
+    font-size: 1.5rem;
+  }
+
+  .thumb.icon img {
+    width: 56px;
+    height: 56px;
+    border-radius: 13px;
+  }
+
+  .project-body {
+    padding: 0;
+  }
+
+  .project h4 {
+    font-size: 1rem;
+  }
+
+  .project .stack {
+    margin-top: 2px;
+    font-size: 0.78rem;
+  }
+
+  .project p.desc {
+    margin-top: 6px;
+    font-size: 0.85rem;
+    line-height: 1.6;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    overflow: hidden;
+  }
+
+  .links {
+    padding-top: 10px;
+    gap: 6px 16px;
+    font-size: 0.78rem;
+  }
+
+  .group {
+    margin-top: 44px;
+  }
+}
+
+@media (max-width: 375px) {
+  .project {
+    grid-template-columns: 80px minmax(0, 1fr);
+    gap: 14px;
+    padding: 16px 14px;
+  }
+
+  .thumb.icon img {
+    width: 48px;
+    height: 48px;
+    border-radius: 11px;
+  }
+}
+
+@media (max-width: 320px) {
+  .project {
+    grid-template-columns: 64px minmax(0, 1fr);
+    gap: 12px;
+    padding: 14px 12px;
+  }
+
+  .thumb .play {
+    font-size: 1.2rem;
+  }
+
+  .thumb.icon img {
+    width: 40px;
+    height: 40px;
+    border-radius: 9px;
+  }
+
+  .project p.desc {
+    font-size: 0.82rem;
+  }
+}
