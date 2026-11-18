@@ -2,359 +2,124 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Liftly - Data Deletion Request</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
-        body {
-            background: linear-gradient(135deg, #18cb65, #0fa54c);
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-        }
-
-        .container {
-            max-width: 600px;
-            width: 100%;
-            margin: 0 auto;
-        }
-
-        .back-button {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            color: white;
-            text-decoration: none;
-            margin-bottom: 20px;
-            font-size: 0.9rem;
-            transition: opacity 0.2s;
-        }
-
-        .back-button:hover {
-            opacity: 0.8;
-        }
-
-        .card {
-            background: white;
-            border-radius: 24px;
-            padding: 32px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-        }
-
-        h1 {
-            font-size: 1.8rem;
-            color: #1a1a2e;
-            margin-bottom: 8px;
-        }
-
-        .subtitle {
-            color: #666;
-            margin-bottom: 24px;
-            font-size: 0.9rem;
-        }
-
-        .info-box {
-            background: #e8f5e9;
-            padding: 16px;
-            border-radius: 12px;
-            margin-bottom: 24px;
-            border-left: 4px solid #18cb65;
-        }
-
-        .info-box h3 {
-            color: #2e7d32;
-            font-size: 1rem;
-            margin-bottom: 8px;
-        }
-
-        .info-box p {
-            color: #1b5e20;
-            font-size: 0.85rem;
-            line-height: 1.4;
-        }
-
-        .data-types {
-            background: #f8f9fa;
-            border-radius: 12px;
-            padding: 16px;
-            margin-bottom: 24px;
-        }
-
-        .data-types h3 {
-            font-size: 0.9rem;
-            color: #333;
-            margin-bottom: 12px;
-        }
-
-        .data-types ul {
-            list-style: none;
-            padding-left: 0;
-        }
-
-        .data-types li {
-            padding: 8px 0;
-            border-bottom: 1px solid #eee;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-size: 0.85rem;
-            color: #555;
-        }
-
-        .data-types li:last-child {
-            border-bottom: none;
-        }
-
-        .data-types li::before {
-            content: "📊";
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        label {
-            display: block;
-            font-weight: 500;
-            margin-bottom: 6px;
-            color: #333;
-            font-size: 0.85rem;
-        }
-
-        input,
-        textarea {
-            width: 100%;
-            padding: 12px 14px;
-            border: 1px solid #ddd;
-            border-radius: 12px;
-            font-size: 0.9rem;
-            transition: all 0.2s;
-            font-family: inherit;
-        }
-
-        input:focus,
-        textarea:focus {
-            outline: none;
-            border-color: #18cb65;
-            box-shadow: 0 0 0 3px rgba(24, 203, 101, 0.1);
-        }
-
-        textarea {
-            resize: vertical;
-            min-height: 80px;
-        }
-
-        .note {
-            background: #fff3e0;
-            padding: 12px;
-            border-radius: 12px;
-            font-size: 0.8rem;
-            color: #e65100;
-            margin-bottom: 20px;
-            border-left: 3px solid #ff9800;
-        }
-
-        .button {
-            width: 100%;
-            background: linear-gradient(135deg, #18cb65, #0fa54c);
-            color: white;
-            border: none;
-            padding: 14px;
-            border-radius: 40px;
-            font-size: 1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.2s;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-        }
-
-        .button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(24, 203, 101, 0.3);
-        }
-
-        .button:active {
-            transform: translateY(0);
-        }
-
-        .in-app-steps {
-            background: #e3f2fd;
-            border-radius: 12px;
-            padding: 16px;
-            margin-top: 24px;
-        }
-
-        .in-app-steps h3 {
-            font-size: 0.9rem;
-            color: #1565c0;
-            margin-bottom: 12px;
-        }
-
-        .in-app-steps ol {
-            padding-left: 20px;
-            margin: 0;
-        }
-
-        .in-app-steps li {
-            font-size: 0.8rem;
-            color: #0d47a1;
-            margin-bottom: 8px;
-            line-height: 1.4;
-        }
-
-        footer {
-            text-align: center;
-            margin-top: 20px;
-            color: rgba(255, 255, 255, 0.7);
-            font-size: 0.75rem;
-        }
-
-        hr {
-            margin: 20px 0;
-            border: none;
-            border-top: 1px solid #eee;
-        }
-
-        @media (max-width: 600px) {
-            .card {
-                padding: 24px;
-            }
-
-            h1 {
-                font-size: 1.5rem;
-            }
-        }
-    </style>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Delete Your Data – Liftly</title>
+    <meta name="description" content="How to delete some or all of your Liftly data without deleting your account." />
+    <meta name="color-scheme" content="light dark" />
+    <link rel="icon" type="image/png" href="images/liftly/favicon.png" />
+    <link rel="apple-touch-icon" href="images/liftly/apple-touch-icon.png" />
+    <link rel="stylesheet" href="assets/css/legal.css?v=1" />
 </head>
 
 <body>
-    <div class="container">
-        <a href="index.html" class="back-button">
-            ← Back to Liftly
-        </a>
+    <header class="brandbar">
+        <div class="doc">
+            <a class="brand" href="liftly.html"><img src="images/liftly/apple-touch-icon.png" width="180" height="180"
+                    alt="" />Liftly</a>
+            <nav aria-label="Liftly"><a href="privacy-policy.html">Privacy Policy</a></nav>
+        </div>
+    </header>
 
-        <div class="card">
-            <h1>Request Data Deletion</h1>
-            <p class="subtitle">Request to delete your personal data from Liftly's servers.</p>
-
-            <div class="info-box">
-                <h3>What happens when you request data deletion?</h3>
-                <p>We will delete your workout history, personal information, and all associated data from our servers.
-                    Some data may be retained for legal or security purposes as required by law.</p>
-            </div>
-
-            <div class="data-types">
-                <h3>Data that will be deleted:</h3>
-                <ul>
-                    <li>All workout history and logs</li>
-                    <li>Personal records and achievements</li>
-                    <li>All saved routines</li>
-                    <li>Goals and progress tracking</li>
-                    <li>Muscle color history</li>
-                    <li>Theme and app settings</li>
-                </ul>
-            </div>
-
-            <div class="data-types" style="background: #fff8e1;">
-                <h3>Data that will be kept:</h3>
-                <ul>
-                    <li>Your account and login credentials</li>
-                    <li>Profile information (name, username, email)</li>
-                    <li>Profile photo</li>
-                    <li>Friends list and connections</li>
-                    <li>Reactions sent and received</li>
-                    <li>Notification preferences</li>
-                </ul>
-            </div>
-
-            <div class="note">
-                ⚠️ This action only deletes your workout data, not your account. Your profile and social connections
-                remain intact.
-                You can continue logging new workouts immediately.
-            </div>
-
-            <form id="deletionForm">
-                <div class="form-group">
-                    <label>Full Name *</label>
-                    <input type="text" id="name" placeholder="Enter the name on your account" required>
-                </div>
-
-                <div class="form-group">
-                    <label>Account Email *</label>
-                    <input type="email" id="email" placeholder="Enter your account email address" required>
-                </div>
-
-                <div class="form-group">
-                    <label>Username (optional)</label>
-                    <input type="text" id="username" placeholder="@username - helps us locate your account">
-                </div>
-
-                <div class="form-group">
-                    <label>Additional information (optional)</label>
-                    <textarea id="additional"
-                        placeholder="Any other details that can help us identify your account..."></textarea>
-                </div>
-
-                <button type="submit" class="button">
-                    <span>🗑️</span> Request Data Deletion
-                </button>
-            </form>
-
-            <hr>
-
-            <div class="in-app-steps">
-                <h3>Or delete data directly from the app:</h3>
-                <ol>
-                    <li>Open Liftly on your device</li>
-                    <li>Go to <strong>Profile Tab</strong> → <strong>Settings</strong> (gear icon)</li>
-                    <li>Scroll to <strong>Other</strong> section</li>
-                    <li>Tap <strong>Reset All Data</strong> to delete all workouts, goals, and settings</li>
-                </ol>
-                <p style="font-size: 0.75rem; color: #666; margin-top: 12px;">
-                    Note: "Reset All Data" keeps your account but clears local data.<br>
-                    "Delete Account" permanently removes your account and all data from our servers.
-                </p>
-            </div>
+    <main class="doc">
+        <div class="title">
+            <h1>Delete your Liftly data</h1>
+            <p class="lead">You can delete your workout data, or request deletion of specific information, without
+                deleting your account. To delete everything, see <a href="account-deletion.html">Delete your
+                    account</a>.</p>
         </div>
 
-        <footer>
-            &copy; 2025 Liftly | Simple fitness tracking
+        <h2>Reset your data in the App</h2>
+        <p>This is the fastest option, and your data is deleted immediately.</p>
+        <ol class="steps">
+            <li>Open Liftly and go to the <strong>Profile</strong> tab.</li>
+            <li>Tap <strong>Settings</strong> (the gear icon).</li>
+            <li>Scroll to the <strong>Other</strong> section and tap <strong>Reset All Data</strong>.</li>
+            <li>Confirm the reset.</li>
+        </ol>
+
+        <h3>What Reset All Data deletes</h3>
+        <p>The following is permanently removed from our servers and your device:</p>
+        <ul>
+            <li>Workout history</li>
+            <li>Saved routines</li>
+            <li>Goals</li>
+            <li>Personal records and workout totals</li>
+            <li>Reactions on your workouts</li>
+        </ul>
+
+        <h3>What it keeps</h3>
+        <ul>
+            <li>Your account and sign-in credentials</li>
+            <li>Your profile: name, username, profile photo, and body measurements</li>
+            <li>Your friends, friend requests, and blocked users</li>
+            <li>Reactions you have sent to others</li>
+            <li>Preferences saved to your account</li>
+        </ul>
+
+        <div class="notice warning">
+            <p><strong>Deleted data cannot be recovered.</strong> You can continue logging new workouts right away.</p>
+        </div>
+
+        <h2>Request deletion of specific data</h2>
+        <p>To delete information that Reset All Data keeps, such as your profile photo or body measurements, or if you
+            can't access the App, submit this form. It opens a pre-filled email in your mail app for you to send. To
+            help us verify your request, please send it from the email address associated with your account.</p>
+
+        <form class="form" id="dataForm">
+            <div class="field">
+                <label for="name">Full name</label>
+                <input type="text" id="name" name="name" autocomplete="name" required />
+            </div>
+            <div class="field">
+                <label for="email">Account email address</label>
+                <input type="email" id="email" name="email" autocomplete="email" required />
+            </div>
+            <div class="field">
+                <label for="username">Username <span class="optional">(optional)</span></label>
+                <input type="text" id="username" name="username" autocomplete="username" autocapitalize="none"
+                    spellcheck="false" />
+            </div>
+            <div class="field">
+                <label for="details">Data you want deleted</label>
+                <textarea id="details" name="details" required
+                    placeholder="For example: my profile photo and body measurements"></textarea>
+            </div>
+            <button type="submit" class="button">Request data deletion</button>
+            <p class="hint">We respond to deletion requests within 3 to 5 business days.</p>
+        </form>
+
+        <p>For more about how we handle your information, read our <a href="privacy-policy.html">Privacy Policy</a>.
+        </p>
+
+        <footer class="legal-footer">
+            <nav aria-label="Related pages">
+                <a href="liftly.html">Liftly</a>
+                <a href="privacy-policy.html">Privacy Policy</a>
+                <a href="account-deletion.html">Delete account</a>
+                <a href="mailto:workoutappbusiness@gmail.com">Contact</a>
+            </nav>
+            <p>&copy; <span class="year">2026</span> Liftly</p>
         </footer>
-    </div>
+    </main>
 
     <script>
-        document.getElementById('deletionForm').addEventListener('submit', function (e) {
+        document.querySelectorAll(".year").forEach(function (el) { el.textContent = new Date().getFullYear(); });
+
+        document.getElementById("dataForm").addEventListener("submit", function (e) {
             e.preventDefault();
+            var v = function (id) { return document.getElementById(id).value.trim(); };
 
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const username = document.getElementById('username').value;
-            const additional = document.getElementById('additional').value;
+            var body = "Data deletion request\n\n";
+            body += "Name: " + v("name") + "\n";
+            body += "Account email: " + v("email") + "\n";
+            if (v("username")) body += "Username: " + v("username") + "\n";
+            body += "\nData to delete:\n" + v("details") + "\n";
+            body += "\nPlease delete the data described above from my Liftly account.";
 
-            const subject = encodeURIComponent('Liftly Data Deletion Request');
-
-            let body = `DATA DELETION REQUEST\n\n`;
-            body += `Name: ${name}\n`;
-            body += `Email: ${email}\n`;
-            if (username) body += `Username: ${username}\n`;
-            if (additional) body += `\nAdditional Information:\n${additional}\n`;
-            body += `\n---\nPlease delete all personal data associated with my Liftly account as described above.`;
-
-            const mailtoLink = `mailto:workoutappbusiness@gmail.com?subject=${subject}&body=${encodeURIComponent(body)}`;
-
-            window.location.href = mailtoLink;
+            window.location.href = "mailto:workoutappbusiness@gmail.com"
+                + "?subject=" + encodeURIComponent("Liftly data deletion request")
+                + "&body=" + encodeURIComponent(body);
         });
     </script>
 </body>
