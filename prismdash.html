@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Prism Dash – Chain Gems, Bank the Pot</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Prism Dash is a roguelike runner: chain gems into streaks, bank your pot before you crash, and build runs with game-changing trinkets." />
+    <link rel="icon" type="image/png" href="images/prismdash/icon-180.png" />
+    <link rel="apple-touch-icon" href="images/prismdash/icon-180.png" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    <style>
+        :root { --ink: #2D2350; --sky: #7EC8F2; --yellow: #FFD23F; --green: #4FC35F; --purple: #A06CF0; --paper: #fff; }
+        * { box-sizing: border-box; }
+        body { margin: 0; font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; background: var(--sky); color: var(--ink); }
+        .hero { min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 48px 16px; }
+        .card { width: 100%; max-width: 560px; text-align: center; }
+        .app-icon { width: 160px; height: 160px; border-radius: 36px; border: 5px solid var(--ink); box-shadow: 0 8px 0 var(--ink); }
+        .banner { display: inline-block; margin: 28px 0 8px; padding: 10px 28px; background: var(--yellow); border: 5px solid var(--ink);
+                  border-radius: 18px; box-shadow: 0 8px 0 var(--ink); transform: rotate(-3deg); }
+        h1 { margin: 0; font-size: clamp(2.2rem, 8vw, 3.4rem); letter-spacing: 0.06em; color: #fff;
+             -webkit-text-stroke: 2px var(--ink); paint-order: stroke fill; text-shadow: 0 4px 0 var(--ink); }
+        .tagline { font-size: 1.15rem; font-weight: 600; margin: 22px 0 26px; }
+        .features { display: grid; gap: 12px; text-align: left; }
+        .features div { background: var(--paper); border: 4px solid var(--ink); border-radius: 16px; box-shadow: 0 6px 0 var(--ink);
+                        padding: 14px 16px; font-weight: 600; }
+        .features i { width: 1.6em; color: var(--purple); }
+        .status { display: inline-block; margin-top: 26px; padding: 12px 22px; background: var(--green); color: #fff; font-weight: 800;
+                  border: 4px solid var(--ink); border-radius: 14px; box-shadow: 0 6px 0 var(--ink); }
+        .footer { padding: 28px 16px 40px; text-align: center; font-weight: 600; }
+        .footer a { color: var(--ink); margin: 0 10px; }
+    </style>
+</head>
+
+<body>
+    <section class="hero">
+        <div class="card">
+            <img src="images/prismdash/icon-512.png" alt="Prism Dash app icon" class="app-icon">
+            <div class="banner"><h1>PRISM DASH</h1></div>
+            <p class="tagline">A roguelike runner: chain gems, bank the pot, don't crash.</p>
+            <div class="features">
+                <div><i class="fas fa-gem"></i> Chain the same gem to build a streak and grow your pot</div>
+                <div><i class="fas fa-piggy-bank"></i> Bank it before you crash, or risk it for more</div>
+                <div><i class="fas fa-magic"></i> Trinkets, polish and rare gem editions bend the rules every run</div>
+                <div><i class="fas fa-route"></i> Six routes to unlock, from Neon City to a brick-built town</div>
+                <div><i class="fas fa-user-secret"></i> No ads, no purchases, no account required</div>
+            </div>
+            <div class="status"><i class="fab fa-google-play"></i> Coming soon to Google Play and the App Store</div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <a href="prismdash-privacy-policy.html"><i class="fas fa-shield-alt"></i> Privacy</a>
+        <a href="mailto:workoutappbusiness@gmail.com?subject=Prism%20Dash"><i class="fas fa-envelope"></i> Contact</a>
+        <a href="index.html"><i class="fas fa-user"></i> Isaac Mayernik</a>
+        <p>&copy; <span id="year">2026</span> Prism Dash &middot; 3D models by Kenney (kenney.nl)</p>
+    </footer>
+
+    <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+</body>
+
+</html>
