@@ -5,55 +5,318 @@
     <title>Prism Dash – Chain Gems, Bank the Pot</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="Prism Dash is a roguelike runner: chain gems into streaks, bank your pot before you crash, and build runs with game-changing trinkets." />
+    <meta name="description" content="Prism Dash is a roguelike runner for Android and iOS: chain gems into streaks, bank your pot before you crash, and build every run with game-changing trinkets." />
+    <meta name="theme-color" content="#140C33" />
+    <meta property="og:title" content="Prism Dash" />
+    <meta property="og:description" content="Chain gems, bank your pot, don't crash. A roguelike runner." />
+    <meta property="og:image" content="https://isaacmayernik.github.io/images/prismdash/icon-512.png" />
     <link rel="icon" type="image/png" href="images/prismdash/icon-180.png" />
     <link rel="apple-touch-icon" href="images/prismdash/icon-180.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@500;700;800&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
     <style>
-        :root { --ink: #2D2350; --sky: #7EC8F2; --yellow: #FFD23F; --green: #4FC35F; --purple: #A06CF0; --paper: #fff; }
+        :root {
+            --night: #140C33;
+            --night-2: #1E1450;
+            --ink: #2D2350;
+            --text: #F3EEFF;
+            --muted: #B9AEE0;
+            --card: rgba(255, 255, 255, 0.06);
+            --card-line: rgba(255, 255, 255, 0.12);
+            --pink: #FF4FB8;
+            --cyan: #3FE0F0;
+            --yellow: #FFD23F;
+            --green: #4FC35F;
+            --purple: #A06CF0;
+            --prism: linear-gradient(90deg, #FF5C7A, #FFB347, #FFE45C, #5CE08A, #4FC3FF, #A06CF0, #FF5CC8);
+        }
+
         * { box-sizing: border-box; }
-        body { margin: 0; font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; background: var(--sky); color: var(--ink); }
-        .hero { min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 48px 16px; }
-        .card { width: 100%; max-width: 560px; text-align: center; }
-        .app-icon { width: 160px; height: 160px; border-radius: 36px; border: 5px solid var(--ink); box-shadow: 0 8px 0 var(--ink); }
-        .banner { display: inline-block; margin: 28px 0 8px; padding: 10px 28px; background: var(--yellow); border: 5px solid var(--ink);
-                  border-radius: 18px; box-shadow: 0 8px 0 var(--ink); transform: rotate(-3deg); }
-        h1 { margin: 0; font-size: clamp(2.2rem, 8vw, 3.4rem); letter-spacing: 0.06em; color: #fff;
-             -webkit-text-stroke: 2px var(--ink); paint-order: stroke fill; text-shadow: 0 4px 0 var(--ink); }
-        .tagline { font-size: 1.15rem; font-weight: 600; margin: 22px 0 26px; }
-        .features { display: grid; gap: 12px; text-align: left; }
-        .features div { background: var(--paper); border: 4px solid var(--ink); border-radius: 16px; box-shadow: 0 6px 0 var(--ink);
-                        padding: 14px 16px; font-weight: 600; }
-        .features i { width: 1.6em; color: var(--purple); }
-        .status { display: inline-block; margin-top: 26px; padding: 12px 22px; background: var(--green); color: #fff; font-weight: 800;
-                  border: 4px solid var(--ink); border-radius: 14px; box-shadow: 0 6px 0 var(--ink); }
-        .footer { padding: 28px 16px 40px; text-align: center; font-weight: 600; }
-        .footer a { color: var(--ink); margin: 0 10px; }
+        html { scroll-behavior: smooth; }
+        body {
+            margin: 0;
+            font-family: "Nunito", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+            color: var(--text);
+            background: var(--night);
+            line-height: 1.55;
+            overflow-x: hidden;
+        }
+        img { max-width: 100%; display: block; }
+        a { color: inherit; }
+        h1, h2, h3 { font-family: "Fredoka", "Nunito", sans-serif; line-height: 1.1; margin: 0; }
+        .wrap { width: 100%; max-width: 1120px; margin: 0 auto; padding: 0 20px; }
+
+        /* ---------- nav ---------- */
+        .nav { position: absolute; inset: 0 0 auto 0; z-index: 5; }
+        .nav .wrap { display: flex; align-items: center; justify-content: space-between; height: 72px; }
+        .brand { display: flex; align-items: center; gap: 10px; font-family: "Fredoka"; font-weight: 700; font-size: 1.2rem; text-decoration: none; }
+        .brand img { width: 36px; height: 36px; border-radius: 10px; }
+        .nav-links { display: flex; gap: 22px; font-weight: 700; }
+        .nav-links a { text-decoration: none; color: var(--muted); }
+        .nav-links a:hover { color: var(--text); }
+
+        /* ---------- hero ---------- */
+        .hero {
+            position: relative;
+            padding: 120px 0 80px;
+            background:
+                radial-gradient(60% 50% at 75% 30%, rgba(255, 79, 184, 0.35), transparent 70%),
+                radial-gradient(50% 45% at 15% 70%, rgba(63, 224, 240, 0.22), transparent 70%),
+                linear-gradient(180deg, var(--night-2) 0%, var(--night) 100%);
+            overflow: hidden;
+        }
+        .hero::after {
+            /* neon road grid fading out at the bottom */
+            content: ""; position: absolute; left: -10%; right: -10%; bottom: -1px; height: 45%;
+            background:
+                repeating-linear-gradient(90deg, rgba(63, 224, 240, 0.25) 0 2px, transparent 2px 80px),
+                repeating-linear-gradient(0deg, rgba(255, 79, 184, 0.25) 0 2px, transparent 2px 60px);
+            transform: perspective(400px) rotateX(60deg);
+            transform-origin: bottom;
+            mask-image: linear-gradient(0deg, #000 10%, transparent 90%);
+            -webkit-mask-image: linear-gradient(0deg, #000 10%, transparent 90%);
+            pointer-events: none;
+        }
+        .hero .wrap { position: relative; z-index: 1; display: grid; grid-template-columns: 1.05fr 1fr; gap: 40px; align-items: center; }
+        .eyebrow {
+            display: inline-flex; align-items: center; gap: 8px; padding: 6px 14px; border-radius: 999px;
+            background: var(--card); border: 1px solid var(--card-line); font-weight: 800; font-size: 0.85rem;
+            letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted);
+        }
+        .eyebrow .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--green); box-shadow: 0 0 10px var(--green); }
+        .title {
+            margin: 18px 0 14px; font-size: clamp(3rem, 9vw, 5.6rem); font-weight: 700; letter-spacing: 0.01em;
+            background: var(--prism); -webkit-background-clip: text; background-clip: text; color: transparent;
+            filter: drop-shadow(0 6px 0 rgba(0, 0, 0, 0.35));
+        }
+        .lead { font-size: clamp(1.1rem, 2.4vw, 1.35rem); color: var(--muted); max-width: 30ch; margin: 0 0 28px; }
+        .lead strong { color: var(--text); }
+        .ctas { display: flex; flex-wrap: wrap; gap: 12px; }
+        .btn {
+            display: inline-flex; align-items: center; gap: 10px; padding: 14px 22px; border-radius: 16px;
+            font-weight: 800; font-size: 1rem; text-decoration: none; transition: transform 0.15s ease, box-shadow 0.15s ease;
+        }
+        .btn:hover { transform: translateY(-2px); }
+        .btn-primary { background: var(--yellow); color: var(--ink); box-shadow: 0 5px 0 #C99A00; }
+        .btn-primary:hover { box-shadow: 0 7px 0 #C99A00; }
+        .btn-ghost { background: var(--card); border: 1px solid var(--card-line); color: var(--text); }
+        .btn small { display: block; font-size: 0.72rem; font-weight: 700; opacity: 0.75; line-height: 1; }
+        .btn span { line-height: 1.15; text-align: left; }
+        .fine { margin-top: 14px; font-size: 0.9rem; color: var(--muted); }
+
+        /* phones */
+        .phones { position: relative; height: 560px; }
+        .phone {
+            position: absolute; width: 250px; aspect-ratio: 9 / 16; border-radius: 30px; padding: 8px;
+            background: #0B0720; border: 1px solid rgba(255, 255, 255, 0.15);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(0, 0, 0, 0.4);
+        }
+        .phone img { width: 100%; height: 100%; object-fit: cover; border-radius: 23px; }
+        .phone.back { left: 4%; top: 50px; transform: rotate(-8deg); opacity: 0.9; }
+        .phone.front { right: 6%; top: 0; transform: rotate(5deg); z-index: 2; box-shadow: 0 30px 70px rgba(255, 79, 184, 0.35), 0 0 0 1px rgba(0, 0, 0, 0.4); }
+        .float { animation: float 6s ease-in-out infinite; }
+        .phone.back.float { animation-delay: -3s; }
+        @keyframes float { 50% { translate: 0 -12px; } }
+
+        /* ---------- sections ---------- */
+        section.block { padding: 90px 0; }
+        .section-head { text-align: center; margin-bottom: 44px; }
+        .section-head h2 { font-size: clamp(2rem, 5vw, 2.8rem); }
+        .section-head p { color: var(--muted); margin: 10px auto 0; max-width: 52ch; font-size: 1.1rem; }
+
+        .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; counter-reset: step; }
+        .step {
+            position: relative; padding: 28px 24px 26px; border-radius: 22px; background: var(--card); border: 1px solid var(--card-line);
+        }
+        .step .icon {
+            width: 56px; height: 56px; border-radius: 16px; display: grid; place-items: center; font-size: 1.5rem; margin-bottom: 16px;
+            color: var(--ink);
+        }
+        .step h3 { font-size: 1.45rem; margin-bottom: 6px; }
+        .step p { margin: 0; color: var(--muted); }
+        .step::before {
+            counter-increment: step; content: counter(step); position: absolute; top: 18px; right: 22px;
+            font-family: "Fredoka"; font-weight: 700; font-size: 2.6rem; color: rgba(255, 255, 255, 0.08);
+        }
+
+        .gallery {
+            display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px;
+        }
+        .gallery figure { margin: 0; }
+        .gallery img { border-radius: 20px; border: 1px solid var(--card-line); aspect-ratio: 9 / 16; object-fit: cover; width: 100%; }
+        .gallery figcaption { text-align: center; margin-top: 10px; font-weight: 800; color: var(--muted); }
+
+        .features { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+        .feature { padding: 24px; border-radius: 20px; background: var(--card); border: 1px solid var(--card-line); }
+        .feature i { font-size: 1.4rem; margin-bottom: 12px; display: block; }
+        .feature h3 { font-size: 1.2rem; margin-bottom: 6px; }
+        .feature p { margin: 0; color: var(--muted); font-size: 0.98rem; }
+
+        .routes { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 30px; }
+        .route { padding: 9px 16px; border-radius: 999px; font-weight: 800; color: var(--ink); }
+
+        .tester {
+            position: relative; overflow: hidden; border-radius: 28px; padding: 48px 32px; text-align: center;
+            background: radial-gradient(80% 120% at 50% 0%, rgba(255, 79, 184, 0.35), transparent 70%), var(--night-2);
+            border: 1px solid var(--card-line);
+        }
+        .tester::before { content: ""; position: absolute; inset: 0 0 auto 0; height: 5px; background: var(--prism); }
+        .tester h2 { font-size: clamp(1.8rem, 4.5vw, 2.5rem); margin-bottom: 10px; }
+        .tester p { color: var(--muted); max-width: 54ch; margin: 0 auto 26px; font-size: 1.08rem; }
+
+        footer { padding: 40px 0 50px; color: var(--muted); font-size: 0.95rem; }
+        footer .wrap { display: flex; flex-wrap: wrap; gap: 14px 28px; justify-content: space-between; align-items: center; }
+        footer nav { display: flex; flex-wrap: wrap; gap: 18px; font-weight: 700; }
+        footer a { text-decoration: none; }
+        footer a:hover { color: var(--text); }
+
+        /* ---------- responsive ---------- */
+        @media (max-width: 900px) {
+            .hero { padding-top: 100px; }
+            .hero .wrap { grid-template-columns: 1fr; text-align: center; }
+            .lead { margin-left: auto; margin-right: auto; }
+            .ctas { justify-content: center; }
+            .phones { height: 440px; max-width: 400px; margin: 0 auto; width: 100%; }
+            .phone { width: 200px; }
+            .steps, .features { grid-template-columns: 1fr; }
+            .gallery { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 560px) {
+            .nav-links { display: none; }
+            .phones { height: 380px; }
+            .phone { width: 170px; border-radius: 24px; padding: 6px; }
+            .phone img { border-radius: 19px; }
+            .phone.back { left: 0; }
+            .phone.front { right: 0; }
+            section.block { padding: 64px 0; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .float { animation: none; }
+            html { scroll-behavior: auto; }
+            .btn { transition: none; }
+        }
     </style>
 </head>
 
 <body>
-    <section class="hero">
-        <div class="card">
-            <img src="images/prismdash/icon-512.png" alt="Prism Dash app icon" class="app-icon">
-            <div class="banner"><h1>PRISM DASH</h1></div>
-            <p class="tagline">A roguelike runner: chain gems, bank the pot, don't crash.</p>
-            <div class="features">
-                <div><i class="fas fa-gem"></i> Chain the same gem to build a streak and grow your pot</div>
-                <div><i class="fas fa-piggy-bank"></i> Bank it before you crash, or risk it for more</div>
-                <div><i class="fas fa-magic"></i> Trinkets, polish and rare gem editions bend the rules every run</div>
-                <div><i class="fas fa-route"></i> Six routes to unlock, from Neon City to a brick-built town</div>
-                <div><i class="fas fa-user-secret"></i> No ads, no purchases, no account required</div>
-            </div>
-            <div class="status"><i class="fab fa-google-play"></i> Coming soon to Google Play and the App Store</div>
+    <header class="nav">
+        <div class="wrap">
+            <a class="brand" href="#top"><img src="images/prismdash/icon-180.png" alt="" />Prism Dash</a>
+            <nav class="nav-links" aria-label="Sections">
+                <a href="#how">How it plays</a>
+                <a href="#features">Features</a>
+                <a href="#test">Play the beta</a>
+            </nav>
         </div>
-    </section>
+    </header>
 
-    <footer class="footer">
-        <a href="prismdash-privacy-policy.html"><i class="fas fa-shield-alt"></i> Privacy</a>
-        <a href="mailto:workoutappbusiness@gmail.com?subject=Prism%20Dash"><i class="fas fa-envelope"></i> Contact</a>
-        <a href="index.html"><i class="fas fa-user"></i> Isaac Mayernik</a>
-        <p>&copy; <span id="year">2026</span> Prism Dash &middot; 3D models by Kenney (kenney.nl)</p>
+    <main id="top">
+        <section class="hero">
+            <div class="wrap">
+                <div>
+                    <span class="eyebrow"><span class="dot"></span> Now in closed testing on Android</span>
+                    <h1 class="title">Prism Dash</h1>
+                    <p class="lead">Chain gems. Bank your pot. <strong>Don't crash.</strong> A roguelike runner where every lane is a gamble.</p>
+                    <div class="ctas">
+                        <a class="btn btn-primary" href="#test"><i class="fab fa-google-play"></i><span><small>Become a</small>Beta tester</span></a>
+                        <a class="btn btn-ghost" href="#how"><i class="fas fa-play"></i> How it plays</a>
+                    </div>
+                    <p class="fine">Free on Android, with iOS on the way. No in-app purchases.</p>
+                </div>
+                <div class="phones" aria-hidden="true">
+                    <div class="phone back float"><img src="images/prismdash/shot-menu.webp" alt="" /></div>
+                    <div class="phone front float"><img src="images/prismdash/shot-neon_city.webp" alt="" /></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="block" id="how">
+            <div class="wrap">
+                <div class="section-head">
+                    <h2>One swipe from glory</h2>
+                    <p>Every run is a push-your-luck race. The bigger your pot gets, the more a single wall costs you.</p>
+                </div>
+                <div class="steps">
+                    <article class="step">
+                        <div class="icon" style="background: var(--cyan);"><i class="fas fa-gem"></i></div>
+                        <h3>Chain</h3>
+                        <p>Grab the same gem again and again to grow your streak. Each gem adds its value times your streak to the pot.</p>
+                    </article>
+                    <article class="step">
+                        <div class="icon" style="background: var(--yellow);"><i class="fas fa-piggy-bank"></i></div>
+                        <h3>Bank</h3>
+                        <p>Swipe down to lock the pot into your score, or keep chaining for more. Hit a wall and the whole pot is gone.</p>
+                    </article>
+                    <article class="step">
+                        <div class="icon" style="background: var(--pink);"><i class="fas fa-magic"></i></div>
+                        <h3>Build</h3>
+                        <p>Spend coins at the Pit Stop on trinkets that bend the rules, then stack them into ridiculous combos.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="block" style="padding-top: 0;">
+            <div class="wrap">
+                <div class="gallery">
+                    <figure><img src="images/prismdash/shot-menu.webp" alt="Prism Dash main menu with the runner on the start line" loading="lazy" /><figcaption>Pick a runner</figcaption></figure>
+                    <figure><img src="images/prismdash/shot-neon_city.webp" alt="Running through Neon City with a x5 streak" loading="lazy" /><figcaption>Build a streak</figcaption></figure>
+                    <figure><img src="images/prismdash/shot-brickyard.webp" alt="The Brickyard route, built from toy bricks" loading="lazy" /><figcaption>Explore six routes</figcaption></figure>
+                    <figure><img src="images/prismdash/shot-pit_stop.webp" alt="The Pit Stop shop selling trinkets" loading="lazy" /><figcaption>Shop the Pit Stop</figcaption></figure>
+                </div>
+            </div>
+        </section>
+
+        <section class="block" id="features" style="padding-top: 20px;">
+            <div class="wrap">
+                <div class="section-head">
+                    <h2>Never the same run twice</h2>
+                    <p>Roguelike choices on top of a three-lane runner.</p>
+                </div>
+                <div class="features">
+                    <div class="feature"><i class="fas fa-ring" style="color: var(--yellow);"></i><h3>Dozens of trinkets</h3><p>Hot Streak, Crown Jewels, Mirror Ball and more, each one changing how you score.</p></div>
+                    <div class="feature"><i class="fas fa-star" style="color: var(--pink);"></i><h3>Rare editions</h3><p>Foil, Holo and Prismatic gems supercharge your streak when they show up.</p></div>
+                    <div class="feature"><i class="fas fa-door-open" style="color: var(--cyan);"></i><h3>Gate choices</h3><p>Pick a lane at every gate for coins, shields, focus or a bigger pot multiplier.</p></div>
+                    <div class="feature"><i class="fas fa-meteor" style="color: var(--purple);"></i><h3>Stardust progress</h3><p>Every run earns Stardust, even a crash, for permanent upgrades and unlocks.</p></div>
+                    <div class="feature"><i class="fas fa-fire" style="color: #FF7A45;"></i><h3>Five Heat levels</h3><p>Beat a route, then turn up the Heat for tougher runs and bigger rewards.</p></div>
+                    <div class="feature"><i class="fas fa-cloud" style="color: var(--green);"></i><h3>Cloud saves</h3><p>Progress backs up automatically. Link Google Play Games to carry it to a new phone.</p></div>
+                </div>
+                <div class="routes" aria-label="Routes">
+                    <span class="route" style="background: #8BE08B;">Meadow Lane</span>
+                    <span class="route" style="background: #FF8AD8;">Neon City</span>
+                    <span class="route" style="background: #FFD27A;">Dune Road</span>
+                    <span class="route" style="background: #7FE3F0;">Lagoon Pier</span>
+                    <span class="route" style="background: #FF9B85;">Brickyard</span>
+                    <span class="route" style="background: #C3A6FF;">Star Port</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="block" id="test" style="padding-top: 20px;">
+            <div class="wrap">
+                <div class="tester">
+                    <h2>Help test Prism Dash</h2>
+                    <p>The game is in closed testing on Google Play. Send an email with the Gmail address you use on your Android phone and you'll get an invite to install the beta.</p>
+                    <div class="ctas" style="justify-content: center;">
+                        <a class="btn btn-primary" href="mailto:workoutappbusiness@gmail.com?subject=Prism%20Dash%20beta%20tester&body=Please%20add%20this%20Google%20account%20to%20the%20Prism%20Dash%20beta%3A%20"><i class="fas fa-envelope"></i> Join the beta</a>
+                        <a class="btn btn-ghost" href="mailto:workoutappbusiness@gmail.com?subject=Prism%20Dash"><i class="fas fa-comment"></i> Send feedback</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="wrap">
+            <span>&copy; <span id="year">2026</span> Prism Dash &middot; 3D models by Kenney (kenney.nl)</span>
+            <nav aria-label="Footer">
+                <a href="prismdash-privacy-policy.html">Privacy policy</a>
+                <a href="mailto:workoutappbusiness@gmail.com?subject=Prism%20Dash">Contact</a>
+                <a href="index.html">Isaac Mayernik</a>
+            </nav>
+        </div>
     </footer>
 
     <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
